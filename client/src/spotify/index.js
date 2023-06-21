@@ -51,3 +51,25 @@ export const getAccessToken = () => {
 };
 
 export const token = getAccessToken();
+
+export const logout = () => {
+  window.localStorage.removeItem('token_timestamp');
+  window.localStorage.removeItem('access_token');
+  window.localStorage.removeItem('refresh_token');
+  window.location.reload();
+};
+
+
+const headers = {
+  Authorization: `Bearer ${token}`,
+  'Content-Type': 'application/json'
+};
+
+
+export const getUser = () => axios.get('https://api.spotify.com/v1/me', { headers });
+
+export const getFollowing = () =>
+  axios.get('https://api.spotify.com/v1/me/following?type=artist', { headers });
+
+
+  export const getPlaylists = () => axios.get('https://api.spotify.com/v1/me/playlists', { headers });
