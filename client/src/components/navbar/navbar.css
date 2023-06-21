@@ -1,0 +1,115 @@
+.navigation-bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100vh;
+    font-size: 12px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 10px;
+}
+
+.navigation-bar ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+}
+
+.navigation-bar li {
+    text-align: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar-item {
+    text-decoration: none;
+    color: rgba(255, 255, 255, .6);
+    border-left: 5px solid transparent;
+    width: 100px;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-icon {
+    font-size: 24px;
+}
+
+.navbar-item-active,
+.navbar-item:hover {
+    border-left: 5px solid rgb(30, 215, 96);
+    background-color: rgb(33, 33, 33);
+    color: rgba(255, 255, 255, 1);
+}
+
+.navbar-item:hover {
+    transition: all 0.3s ease-out;
+}
+
+.nav-logo img {
+    width: 50px;
+    height: 50px;
+    margin-top: 30px;
+}
+
+.github-link {
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+}
+
+.github-link a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+
+.github-link a:hover {
+    color: rgb(30, 215, 96);
+    transition: color 0.3s ease-in;
+}
+
+.github-icon {
+    width: 30px;
+    height: 30px;
+}
+
+@media (max-width: 768px) {
+
+    .navigation-bar {
+        flex-direction: row;
+        min-height: 70px;
+    }
+
+    .navigation-bar ul {
+        flex-direction: row;
+        width: 100%;
+    }
+
+    .navbar-item {
+        width: 100%;
+    }
+
+    .navbar-item {
+        border-top: 5px solid transparent;
+        border-left: none;
+    }
+
+    .navbar-item-active,
+    .navbar-item:hover {
+        border-top: 5px solid rgb(30, 215, 96);
+        border-left: none;
+        background-color: rgb(33, 33, 33);
+        color: rgba(255, 255, 255, 1);
+}
+
+    .nav-logo {
+        display: none;
+    }
+
+    .github-link {
+        display: none;
+    }
+}

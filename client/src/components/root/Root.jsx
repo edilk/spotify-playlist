@@ -1,7 +1,16 @@
+import { Outlet } from "react-router-dom";
+import { NavBar } from "../navbar/NavBar";
+import './root.css';
+
 export default function Root() {
     return (
-        <div>
-            <h1>Successfully logged in</h1>
-        </div>
+        <>
+            <nav>
+                <NavBar />
+            </nav>
+            <main>
+                <Outlet />
+            </main>
+        </>
     )
 }

@@ -1,0 +1,25 @@
+nav {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100px;
+    background-color: rgb(0, 0, 0);
+}
+
+main {
+    width: calc(100vw - 100px);
+    min-height: 100vh;
+    margin-left: 100px;
+    border: 1px solid red;
+}
+
+@media (max-width: 768px) {
+    nav {
+        top: auto;
+        bottom: 0;
+        right: 0;
+        width: 100vw;
+        height: 70px;
+    }
+}
