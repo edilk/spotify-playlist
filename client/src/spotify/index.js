@@ -72,4 +72,25 @@ export const getFollowing = () =>
   axios.get('https://api.spotify.com/v1/me/following?type=artist', { headers });
 
 
-  export const getPlaylists = () => axios.get('https://api.spotify.com/v1/me/playlists', { headers });
+export const getPlaylists = () => axios.get('https://api.spotify.com/v1/me/playlists', { headers });
+
+export const getTopArtistsLong = () =>
+  axios.get('https://api.spotify.com/v1/me/top/artists?limit=50&time_range=long_term', { headers });
+
+export const getTopTracksLong = () =>
+  axios.get('https://api.spotify.com/v1/me/top/tracks?limit=50&time_range=long_term', { headers });
+
+export const search = (searchString, all, artists, songs, albums) => {
+  let queryString = `q=${searchString}`;
+  if (all) {
+    queryString += '&type=track%2Calbum%2Cartist';
+  } else if (artists) {
+    queryString += '&type=artist'
+  } else if (songs) {
+    queryString += '&type=track';
+  } else if (albums) {
+    queryString += '&type=album';
+  }
+
+  return axios.get(`https://api.spotify.com/v1/search?${queryString}`, { headers })
+}

@@ -1,5 +1,46 @@
 .home-container {
-    padding: 50px 60px;
     width: 100%;
     min-height: 100vh;
+}
+
+.user_preview {
+    margin-top: 100px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+}
+
+.see_more_link {
+    text-decoration: none;
+    white-space: nowrap;
+    padding: 11px 24px;
+}
+
+.user_logout button {
+    padding: 12px 30px;
+}
+
+.user_logout button,
+.see_more_link {
+    background-color: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+    border-radius: 30px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.user_logout button:hover,
+.see_more_link:hover {
+    color: rgb(33, 33, 33);
+    background-color: #fff;
+}
+
+@media (max-width: 768px) {
+    .user_preview {
+        grid-template-columns: 1fr;
+    }
 }

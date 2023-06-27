@@ -4,6 +4,7 @@ import { logout, token } from "./spotify/index";
 import Root from "./components/root/Root";
 import { Login } from "./components/login/Login";
 import { Home } from "./components/home/Home";
+import { Search } from "./components/search/Search";
 
 function App() {
 
@@ -30,6 +31,7 @@ function App() {
     createRoutesFromElements(
       <Route path="/" element={ <Root /> }>
         <Route index element={ <Home onClick={handleLogout} /> } />
+        <Route path="/search" element={ <Search />} />
       </Route>
     )
   )

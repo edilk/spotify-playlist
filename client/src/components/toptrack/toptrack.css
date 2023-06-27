@@ -1,0 +1,43 @@
+.top_tracks li {
+    list-style: none;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.album_img img {
+    width: 50px;
+    margin-right: 20px;
+}
+
+.track_details {
+    display: flex;
+    min-width: 0;
+    justify-content: space-between;
+    color: #fff;
+}
+
+.track_artist_album,
+.track_duration {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.track_name {
+    margin-bottom: 5px;
+    width: 100%;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.track_artist_album span {
+    width: 100%;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
