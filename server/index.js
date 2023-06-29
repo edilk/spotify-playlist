@@ -131,4 +131,4 @@ app.get('*', function (request, response) {
     response.sendFile(path.resolve(__dirname, '../client/public', 'index.html'));
 });
 
-app.listen(8888, () => {console.log('Listening on port 8888')});
+app.listen(process.env.PORT, () => {console.log('Listening on port 8888')});
