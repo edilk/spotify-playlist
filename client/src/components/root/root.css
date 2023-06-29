@@ -15,6 +15,9 @@ main {
 }
 
 @media (max-width: 768px) {
+    main {
+        padding: 50px 10px 70px 10px;
+    }
     nav {
         top: auto;
         bottom: 0;

@@ -1,13 +1,22 @@
+require('dotenv').config();
+
+const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
+const CLIENT_SECRET = process.env.CLIENT_SECRET;
+let REDIRECT_URI = process.env.REDIRECT_URI;
+let FRONTEND_URI = process.env.FRONTEND_URI;
+
 const express = require('express');
 const request = require('request');
 const cors = require('cors');
 const querystring = require('querystring');
 const cookieParser = require('cookie-parser');
 
-const CLIENT_ID = '181842b370ba40c4b78c6ebb9ddad7fa';
-const CLIENT_SECRET = 'df2e6789eee248d0ab89ed99669fa8d3';
-const REDIRECT_URI = 'http://localhost:8888/callback';
-const FRONTEND_URI = 'http://localhost:3000';
+if (process.env.NODE_ENV !== 'production') {
+    REDIRECT_URI = 'http://localhost:8888/callback';
+    FRONTEND_URI = 'http://localhost:3000';
+}
+
+console.log(`CLIENT_ID=${CLIENT_ID}\nCLIENT_SECRET=${CLIENT_SECRET}`);
 
 const generateRandomString = (length) => {
     let text = '';
@@ -32,6 +41,7 @@ app.get('/login', (req, res) => {
 
     const state = generateRandomString(16);
     res.cookie(stateKey, state);
+    console.log(CLIENT_ID);
 
     // application requests authorization
     const scope =  'user-read-private user-read-email user-read-recently-played user-top-read user-follow-read user-follow-modify playlist-read-private playlist-read-collaborative playlist-modify-public';

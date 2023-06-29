@@ -80,15 +80,15 @@ export const getTopArtistsLong = () =>
 export const getTopTracksLong = () =>
   axios.get('https://api.spotify.com/v1/me/top/tracks?limit=50&time_range=long_term', { headers });
 
-export const search = (searchString, all, artists, songs, albums) => {
+export const search = (searchString, activeButton) => {
   let queryString = `q=${searchString}`;
-  if (all) {
+  if (activeButton === 'All') {
     queryString += '&type=track%2Calbum%2Cartist';
-  } else if (artists) {
+  } else if (activeButton === 'Artists') {
     queryString += '&type=artist'
-  } else if (songs) {
+  } else if (activeButton === 'Songs') {
     queryString += '&type=track';
-  } else if (albums) {
+  } else if (activeButton === 'Albums') {
     queryString += '&type=album';
   }
 

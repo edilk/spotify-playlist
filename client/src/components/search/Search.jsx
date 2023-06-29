@@ -4,52 +4,18 @@ import { useState, useEffect } from 'react';
 import { search } from '../../spotify';
 import { Songs } from './Songs';
 import { Artist } from './Artist';
+import { Albums } from './Albums';
 
 export const Search = () => {
 
-    const [allButton, setAllButton] = useState(true);
-    const [artistsButton, setArtistsButton] = useState(false);
-    const [songsButton, setSongsButton] = useState(false);
-    const [albumButton, setAlbumButton] = useState(false);
+    const [activeButton, setActiveButton] = useState('All');
     const [searchString, setSearchString] = useState('');
     const [result, setResult] = useState({});
 
     function handleClick(e) {
         e.preventDefault();
         const value = e.target.value;
-
-        switch(value) {
-            case 'All': {
-                setAllButton(true);
-                setArtistsButton(false);
-                setSongsButton(false);
-                setAlbumButton(false);
-                break;
-            }
-            case 'Artists': {
-                setAllButton(false);
-                setArtistsButton(true);
-                setSongsButton(false);
-                setAlbumButton(false);
-                break;
-            }
-            case 'Songs': {
-                setAllButton(false);
-                setArtistsButton(false);
-                setSongsButton(true);
-                setAlbumButton(false);
-                break;
-            }
-            case 'Albums': {
-                setAllButton(false);
-                setArtistsButton(false);
-                setSongsButton(false);
-                setAlbumButton(true);
-                break;
-            }
-            default:
-                break;
-        }
+        setActiveButton(value);
         console.log(e.target.value);
     }
 
@@ -57,7 +23,7 @@ export const Search = () => {
         let timeoutId;
 
         async function fetchSearch() {
-            const response = await search(searchString, allButton, artistsButton, songsButton, albumButton);
+            const response = await search(searchString, activeButton);
             setResult(response.data);
         }
 
@@ -75,10 +41,11 @@ export const Search = () => {
         return () => {
             clearTimeout(timeoutId);
         };
-    }, [searchString, allButton, artistsButton, songsButton, albumButton]);
-
-    const showSongsComponent = songsButton && result && result.tracks && result.tracks.items;
-    const showArtistComponent = artistsButton && result && result.artists;
+    }, [searchString, activeButton]);
+    
+    const showSongsComponent = activeButton === 'Songs' && result && result.tracks && result.tracks.items;
+    const showArtistComponent = activeButton === 'Artists' && result && result.artists && result.artists.items;
+    const showAlbumsComponent = activeButton === 'Albums' && result && result.albums && result.albums.items;
     
     return (
         <section className="search_page">
@@ -99,27 +66,28 @@ export const Search = () => {
                         type='button' 
                         onClick={handleClick} 
                         value={'All'} 
-                        className={`${allButton ? 'regular_btn active_choice_btn' : 'regular_btn'}`} />
-                    <input 
-                        type='button' 
-                        onClick={handleClick} 
-                        value={'Artists'}
-                        className={`${artistsButton ? 'regular_btn active_choice_btn' : 'regular_btn'}`} />
+                        className={`${activeButton === 'All' ? 'regular_btn active_choice_btn' : 'regular_btn'}`} />
                     <input 
                         type='button' 
                         onClick={handleClick}
                         value={'Songs'}
-                        className={`${songsButton ? 'regular_btn active_choice_btn' : 'regular_btn'}`} />
+                        className={`${activeButton === 'Songs' ? 'regular_btn active_choice_btn' : 'regular_btn'}`} />
+                    <input 
+                        type='button' 
+                        onClick={handleClick} 
+                        value={'Artists'}
+                        className={`${activeButton === 'Artists' ? 'regular_btn active_choice_btn' : 'regular_btn'}`} />
                     <input 
                         type='button' 
                         onClick={handleClick} 
                         value={'Albums'}
-                        className={`${albumButton ? 'regular_btn active_choice_btn' : 'regular_btn'}`} />
+                        className={`${activeButton === 'Albums' ? 'regular_btn active_choice_btn' : 'regular_btn'}`} />
                 </div>
             </form>
             <div>
                 {showSongsComponent ? <Songs tracks={result.tracks.items} /> : <></>}
-                {showArtistComponent ? <Artist artists={result.artists} /> : <></>}
+                {showArtistComponent ? <Artist artists={result.artists.items} /> : <></>}
+                {showAlbumsComponent ? <Albums albums={result.albums.items} /> : <></>}
             </div>
         </section>
     );
