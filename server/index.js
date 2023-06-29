@@ -2,8 +2,8 @@ require('dotenv').config();
 
 const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
-let REDIRECT_URI = process.env.REDIRECT_URI;
-let FRONTEND_URI = process.env.FRONTEND_URI;
+let REDIRECT_URI = process.env.REDIRECT_URL;
+let FRONTEND_URI = process.env.FRONTEND_URL;
 
 const express = require('express');
 const request = require('request');
@@ -16,7 +16,7 @@ if (process.env.NODE_ENV !== 'production') {
     FRONTEND_URI = 'http://localhost:3000';
 }
 
-console.log(`CLIENT_ID=${CLIENT_ID}\nCLIENT_SECRET=${CLIENT_SECRET}`);
+console.log(`REDIRECT_URL=${REDIRECT_URI}\nFRONTEND_URL=${FRONTEND_URI}`);
 
 const generateRandomString = (length) => {
     let text = '';
