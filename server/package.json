@@ -9,7 +9,7 @@
     "client": "cd client && npm start",
     "start": "node server",
     "dev": "nodemon server",
-    "build": "cd client && npm install && npm run build"
+    "build": "cd .. && cd client && npm install && npm run build"
   },
   "keywords": [],
   "author": "",
