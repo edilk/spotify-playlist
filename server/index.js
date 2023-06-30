@@ -4,6 +4,7 @@ const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
 let REDIRECT_URI = process.env.REDIRECT_URL;
 let FRONTEND_URI = process.env.FRONTEND_URL;
+const PORT = process.env.PORT || 8888;
 
 const express = require('express');
 const request = require('request');
@@ -16,7 +17,7 @@ if (process.env.NODE_ENV !== 'production') {
     FRONTEND_URI = 'http://localhost:3000';
 }
 
-console.log(`REDIRECT_URL=${REDIRECT_URI}\nFRONTEND_URL=${FRONTEND_URI}`);
+console.log(`REDIRECT_URL=${REDIRECT_URI}\nFRONTEND_URL=${FRONTEND_URI}\nCLIENT_ID=${CLIENT_ID}`);
 
 const generateRandomString = (length) => {
     let text = '';
@@ -131,4 +132,4 @@ app.get('*', function (request, response) {
     response.sendFile(path.resolve(__dirname, '../client/public', 'index.html'));
 });
 
-app.listen(process.env.PORT, () => {console.log('Listening on port 8888')});
+app.listen(PORT, () => {console.log(`Listening on port ${PORT}`)});
