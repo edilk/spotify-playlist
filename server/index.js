@@ -12,10 +12,10 @@ const cors = require('cors');
 const querystring = require('querystring');
 const cookieParser = require('cookie-parser');
 
-if (process.env.NODE_ENV !== 'production') {
-    REDIRECT_URI = 'http://localhost:8888/callback';
-    FRONTEND_URI = 'http://localhost:3000';
-}
+// if (process.env.NODE_ENV !== 'production') {
+//     REDIRECT_URI = 'http://localhost:8888/callback';
+//     FRONTEND_URI = 'http://localhost:3000';
+// }
 
 console.log(`REDIRECT_URL=${REDIRECT_URI}\nFRONTEND_URL=${FRONTEND_URI}\nCLIENT_ID=${CLIENT_ID}`);
 
@@ -52,7 +52,7 @@ app.get('/login', (req, res) => {
           response_type: 'code',
           client_id: CLIENT_ID,
           scope: scope,
-          redirect_uri: REDIRECT_URI,
+          redirect_uri: "https://spotify-playlist-edil.netlify.app/callback",
           state: state,
         })}`,
     );
