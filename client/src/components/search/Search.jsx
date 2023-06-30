@@ -5,6 +5,7 @@ import { search } from '../../spotify';
 import { Songs } from './Songs';
 import { Artist } from './Artist';
 import { Albums } from './Albums';
+import { All } from './All';
 
 export const Search = () => {
 
@@ -85,6 +86,7 @@ export const Search = () => {
                 </div>
             </form>
             <div>
+                {activeButton === 'All' && result ? <All result={result} /> : <></>}
                 {showSongsComponent ? <Songs tracks={result.tracks.items} /> : <></>}
                 {showArtistComponent ? <Artist artists={result.artists.items} /> : <></>}
                 {showAlbumsComponent ? <Albums albums={result.albums.items} /> : <></>}

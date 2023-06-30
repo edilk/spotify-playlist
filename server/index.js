@@ -129,7 +129,7 @@ app.get('/refresh_token', (req, res) => {
 });
 
 app.get('*', function (request, response) {
-    response.sendFile(path.resolve(__dirname, '../client/public', 'index.html'));
+    response.sendFile(path.resolve(__dirname, './client/public', 'index.html'));
 });
 
 app.listen(PORT, () => {console.log(`Listening on port ${PORT}`)});

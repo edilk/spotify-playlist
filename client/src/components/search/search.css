@@ -182,6 +182,62 @@
     border-radius: 500%;
 }
 
+.albums-container {
+    margin-top: 30px;
+    color: #fff;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.albums-container h1 {
+    margin-bottom: 20px;
+}
+
+.albums {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 250px;
+    align-items: stretch;
+    gap: 10px;
+}
+
+.album-details {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.albums_releasedate span {
+    color: rgba(255, 255, 255, .7);
+    font-size: 14px;
+    width: 40vw;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-top: 6px;
+}
+
+.albums img {
+    width: 150px;
+}
+
+.albums_name span {
+    display: block;
+    font-size: 1.1rem;
+    width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-top: 10px;
+}
+
 @media (min-width: 769px) {
     .track_name,
     .track_artist span,
@@ -197,6 +253,23 @@
     .artists {
         grid-template-columns: 1fr 1fr 1fr;
         gap: 20px;
+    }
+
+    .albums {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .search_input {
+        width: min(40vw, 350px);
+    }
+
+    .albums_releasedate span,
+    .albums_name span {
+        width: 175px;
+    }
+
+    .albums img {
+        width: 175px;
     }
 
 }
@@ -221,6 +294,10 @@
         width: 90vw;
         grid-template-columns: 50px 1fr 50px 66px;
         gap: 10px;
+    }
+
+    .albums img {
+        width: 200px;
     }
 }
 
