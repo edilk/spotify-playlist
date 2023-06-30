@@ -8,7 +8,8 @@
     "client:install": "cd client && npm",
     "client": "cd client && npm start",
     "start": "node server",
-    "dev": "nodemon server"
+    "dev": "nodemon server",
+    "build": "cd client/ && npm && npm install --production && npm build"
   },
   "keywords": [],
   "author": "",
